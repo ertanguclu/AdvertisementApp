@@ -5,7 +5,9 @@ VisualStudioVersion = 17.12.35323.107
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Udemy.AdvertisementApp.Common", "Udemy.AdvertisementApp.Common\Udemy.AdvertisementApp.Common.csproj", "{9590859A-2ADB-4FE6-8DBA-422FF06C07E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Udemy.Advertisement.Entities", "Udemy.Advertisement.Entities\Udemy.Advertisement.Entities.csproj", "{CC89ADD4-821F-4D3B-AF45-D9F1DFBC11BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Udemy.AdvertisementApp.Entities", "Udemy.Advertisement.Entities\Udemy.AdvertisementApp.Entities.csproj", "{CC89ADD4-821F-4D3B-AF45-D9F1DFBC11BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Udemy.AdvertisementApp.DataAccess", "Udemy.AdvertisementApp.DataAccess\Udemy.AdvertisementApp.DataAccess.csproj", "{0042B0DC-8828-4E4B-B178-ABC8285D8243}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CC89ADD4-821F-4D3B-AF45-D9F1DFBC11BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC89ADD4-821F-4D3B-AF45-D9F1DFBC11BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC89ADD4-821F-4D3B-AF45-D9F1DFBC11BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0042B0DC-8828-4E4B-B178-ABC8285D8243}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0042B0DC-8828-4E4B-B178-ABC8285D8243}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0042B0DC-8828-4E4B-B178-ABC8285D8243}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0042B0DC-8828-4E4B-B178-ABC8285D8243}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

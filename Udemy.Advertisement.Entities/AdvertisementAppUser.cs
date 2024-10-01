@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Udemy.Advertisement.Entities
+namespace Udemy.AdvertisementApp.Entities
 {
     public class AdvertisementAppUser : BaseEntity
     {

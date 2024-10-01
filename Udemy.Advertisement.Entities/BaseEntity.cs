@@ -1,4 +1,4 @@
-﻿namespace Udemy.Advertisement.Entities
+﻿namespace Udemy.AdvertisementApp.Entities
 {
     public abstract class BaseEntity
     {

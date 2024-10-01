@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Udemy.Advertisement.Entities
+namespace Udemy.AdvertisementApp.Entities
 {
     public class AppUser : BaseEntity
     {
