@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Udemy.AdvertisementApp.DataAccess.Configurations;
 using Udemy.AdvertisementApp.Entities;
 
 namespace Udemy.AdvertisementApp.DataAccess.Contexts
@@ -7,6 +8,19 @@ namespace Udemy.AdvertisementApp.DataAccess.Contexts
     {
         public AdvertisementContext(DbContextOptions<AdvertisementContext> options) : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new AdvertisementAppUserConfig());
+            modelBuilder.ApplyConfiguration(new AdvertisementAppUserStatusConfig());
+            modelBuilder.ApplyConfiguration(new AdvertisementConfig());
+            modelBuilder.ApplyConfiguration(new AppRoleConfig());
+            modelBuilder.ApplyConfiguration(new AppUserConfig());
+            modelBuilder.ApplyConfiguration(new AppUserRoleConfig());
+            modelBuilder.ApplyConfiguration(new GenderConfig());
+            modelBuilder.ApplyConfiguration(new MilitaryStatusConfig());
+            modelBuilder.ApplyConfiguration(new ProvidedServiceConfig());
         }
 
         public DbSet<Advertisement> Advertisements { get; set; }
