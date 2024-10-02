@@ -1,7 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Udemy.AdvertisementApp.Business.ValidationRules;
 using Udemy.AdvertisementApp.DataAccess.Contexts;
+using Udemy.AdvertisementApp.DataAccess.UnitOfWork;
+using Udemy.AdvertisementApp.Dtos.ProvidedServiceDtos;
 
 namespace Udemy.AdvertisementApp.Business.DependencyResolvers.Microsoft
 {
@@ -12,8 +17,19 @@ namespace Udemy.AdvertisementApp.Business.DependencyResolvers.Microsoft
             services.AddDbContext<AdvertisementContext>(opt =>
             {
                 opt.UseSqlServer(configuration.GetConnectionString("Local"));
-            }
-            );
+            });
+
+            var mapperConfiguration = new MapperConfiguration(opt =>
+            {
+
+            });
+            var mapper = mapperConfiguration.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddScoped<IUow, Uow>();
+
+            services.AddTransient<IValidator<ProvidedServiceCreateDto>, ProvidedServiceCreateDtoValidator>();
+            services.AddTransient<IValidator<ProvidedServiceUpdateDto>, ProvidedServiceUpdateDtoValidator>();
         }
     }
 }
