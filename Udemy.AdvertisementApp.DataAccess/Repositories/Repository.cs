@@ -55,7 +55,7 @@ namespace Udemy.AdvertisementApp.DataAccess.Repositories
         {
             _context.Set<T>().Remove(entity);
         }
-        public async Task Create(T entity)
+        public async Task CreateAsync(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
         }
