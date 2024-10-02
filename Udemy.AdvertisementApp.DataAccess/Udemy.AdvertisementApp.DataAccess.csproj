@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Udemy.Advertisement.Entities\Udemy.AdvertisementApp.Entities.csproj" />
+    <ProjectReference Include="..\Udemy.AdvertisementApp.Common\Udemy.AdvertisementApp.Common.csproj" />
   </ItemGroup>
 
 </Project>
