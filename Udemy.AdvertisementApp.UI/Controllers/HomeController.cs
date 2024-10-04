@@ -19,5 +19,9 @@ namespace Udemy.AdvertisementApp.UI.Controllers
             var response = await _providedServiceService.GetAllAsync();
             return this.ResponseView(response);
         }
+        public IActionResult HumanResource()
+        {
+            return View();
+        }
     }
 }
