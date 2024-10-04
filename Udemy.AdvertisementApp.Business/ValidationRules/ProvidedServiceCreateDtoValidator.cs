@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Udemy.AdvertisementApp.Dtos.ProvidedServiceDtos;
+using Udemy.AdvertisementApp.Dtos;
 
 namespace Udemy.AdvertisementApp.Business.ValidationRules
 {

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Udemy.AdvertisementApp.Dtos.ProvidedServiceDtos;
+using Udemy.AdvertisementApp.Dtos;
 using Udemy.AdvertisementApp.Entities;
 
 namespace Udemy.AdvertisementApp.Business.Mappings.AutoMapper

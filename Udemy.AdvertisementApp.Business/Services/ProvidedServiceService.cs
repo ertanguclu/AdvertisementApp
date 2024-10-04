@@ -2,7 +2,7 @@
 using FluentValidation;
 using Udemy.AdvertisementApp.Business.Interfaces;
 using Udemy.AdvertisementApp.DataAccess.UnitOfWork;
-using Udemy.AdvertisementApp.Dtos.ProvidedServiceDtos;
+using Udemy.AdvertisementApp.Dtos;
 using Udemy.AdvertisementApp.Entities;
 
 namespace Udemy.AdvertisementApp.Business.Services
