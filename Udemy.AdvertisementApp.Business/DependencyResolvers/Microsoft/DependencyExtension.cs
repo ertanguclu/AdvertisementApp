@@ -3,6 +3,9 @@ using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Udemy.AdvertisementApp.Business.Interfaces;
+using Udemy.AdvertisementApp.Business.Mappings.AutoMapper;
+using Udemy.AdvertisementApp.Business.Services;
 using Udemy.AdvertisementApp.Business.ValidationRules;
 using Udemy.AdvertisementApp.DataAccess.Contexts;
 using Udemy.AdvertisementApp.DataAccess.UnitOfWork;
@@ -21,7 +24,7 @@ namespace Udemy.AdvertisementApp.Business.DependencyResolvers.Microsoft
 
             var mapperConfiguration = new MapperConfiguration(opt =>
             {
-
+                opt.AddProfile<ProvidedServiceProfile>();
             });
             var mapper = mapperConfiguration.CreateMapper();
             services.AddSingleton(mapper);
@@ -30,6 +33,8 @@ namespace Udemy.AdvertisementApp.Business.DependencyResolvers.Microsoft
 
             services.AddTransient<IValidator<ProvidedServiceCreateDto>, ProvidedServiceCreateDtoValidator>();
             services.AddTransient<IValidator<ProvidedServiceUpdateDto>, ProvidedServiceUpdateDtoValidator>();
+
+            services.AddScoped<IProvidedServiceService, ProvidedServiceService>();
         }
     }
 }
