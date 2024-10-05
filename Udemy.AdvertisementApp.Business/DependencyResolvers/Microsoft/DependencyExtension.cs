@@ -26,6 +26,7 @@ namespace Udemy.AdvertisementApp.Business.DependencyResolvers.Microsoft
             {
                 opt.AddProfile<ProvidedServiceProfile>();
                 opt.AddProfile<AdvertisementProfile>();
+                opt.AddProfile<AppUserProfile>();
             });
             var mapper = mapperConfiguration.CreateMapper();
             services.AddSingleton(mapper);
@@ -36,9 +37,12 @@ namespace Udemy.AdvertisementApp.Business.DependencyResolvers.Microsoft
             services.AddTransient<IValidator<ProvidedServiceUpdateDto>, ProvidedServiceUpdateDtoValidator>();
             services.AddTransient<IValidator<AdvertisementCreateDto>, AdvertisementCreateDtoValidator>();
             services.AddTransient<IValidator<AdvertisementUpdateDto>, AdvertisementUpdateDtoValidator>();
+            services.AddTransient<IValidator<AppUserCreateDto>, AppUserCreateDtoValidator>();
+            services.AddTransient<IValidator<AppUserUpdateDto>, AppUserUpdateDtoValidator>();
 
             services.AddScoped<IProvidedServiceService, ProvidedServiceService>();
             services.AddScoped<IAdvertisementService, AdvertisementService>();
+            services.AddScoped<IAppUserService, AppUserService>();
         }
     }
 }
