@@ -36,6 +36,9 @@ namespace Udemy.AdvertisementApp.UI
                     opt.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Strict;
                     opt.Cookie.SecurePolicy = Microsoft.AspNetCore.Http.CookieSecurePolicy.SameAsRequest;
                     opt.ExpireTimeSpan = TimeSpan.FromDays(20);
+                    opt.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/SignIn");
+                    opt.LogoutPath = new Microsoft.AspNetCore.Http.PathString("/Account/SignOut");
+                    opt.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/AccessDenied");
                 }
                 );
             services.AddControllersWithViews();

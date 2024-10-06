@@ -23,6 +23,7 @@ namespace Udemy.AdvertisementApp.UI.Controllers
             _userCreateValidator = userCreateValidator;
             _appUserService = appUserService;
             _mapper = mapper;
+
         }
         public async Task<IActionResult> SignUp()
         {
@@ -49,6 +50,17 @@ namespace Udemy.AdvertisementApp.UI.Controllers
             model.Genders = new SelectList(response.Data, "Id", "Definition", model.GenderId);
 
             return View(model);
+        }
+        public IActionResult SignIn()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult SignIn(AppUserLoginDto dto)
+        {
+
+
+            return View(dto);
         }
     }
 }
