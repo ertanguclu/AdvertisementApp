@@ -1,10 +1,12 @@
 using AutoMapper;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using Udemy.AdvertisementApp.Business.DependencyResolvers.Microsoft;
 using Udemy.AdvertisementApp.Business.Helpers;
 using Udemy.AdvertisementApp.UI.Mappings.AutoMapper;
@@ -26,6 +28,16 @@ namespace Udemy.AdvertisementApp.UI
         {
             services.AddDependencies(Configuration);
             services.AddTransient<IValidator<UserCreateModel>, UserCreateModelValidator>();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
+                opt =>
+                {
+                    opt.Cookie.Name = "UdemyCookie";
+                    opt.Cookie.HttpOnly = true;
+                    opt.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Strict;
+                    opt.Cookie.SecurePolicy = Microsoft.AspNetCore.Http.CookieSecurePolicy.SameAsRequest;
+                    opt.ExpireTimeSpan = TimeSpan.FromDays(20);
+                }
+                );
             services.AddControllersWithViews();
 
             var profiles = ProfileHelper.GetProfiles();
@@ -50,7 +62,8 @@ namespace Udemy.AdvertisementApp.UI
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();

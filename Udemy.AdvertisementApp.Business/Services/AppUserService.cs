@@ -22,7 +22,7 @@ namespace Udemy.AdvertisementApp.Business.Services
             _mapper = mapper;
             _createDtoValidator = createDtoValidator;
         }
-        public async Task<IResponse<AppUserCreateDto>> CreateWithRoleAyync(AppUserCreateDto dto, int roleId)
+        public async Task<IResponse<AppUserCreateDto>> CreateWithRoleAsync(AppUserCreateDto dto, int roleId)
         {
             var validationResult = _createDtoValidator.Validate(dto);
             if (validationResult.IsValid)

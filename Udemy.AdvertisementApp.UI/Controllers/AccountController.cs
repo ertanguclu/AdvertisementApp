@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
 using Udemy.AdvertisementApp.Business.Interfaces;
+using Udemy.AdvertisementApp.Common.Enums;
 using Udemy.AdvertisementApp.Dtos;
 using Udemy.AdvertisementApp.UI.Extensions;
 using Udemy.AdvertisementApp.UI.Models;
@@ -37,7 +38,7 @@ namespace Udemy.AdvertisementApp.UI.Controllers
             if (result.IsValid)
             {
                 var dto = _mapper.Map<AppUserCreateDto>(model);
-                var createResponse = await _appUserService.CreateWithRoleAyync(dto, 2);
+                var createResponse = await _appUserService.CreateWithRoleAsync(dto, (int)RoleType.Member);
                 return this.ResponseRedirectAction(createResponse, "SignIn");
             }
             foreach (var error in result.Errors)
