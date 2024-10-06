@@ -1,7 +1,11 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Udemy.AdvertisementApp.Business.Interfaces;
 using Udemy.AdvertisementApp.Common.Enums;
@@ -56,11 +60,25 @@ namespace Udemy.AdvertisementApp.UI.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult SignIn(AppUserLoginDto dto)
+        public async Task<IActionResult> SignIn(AppUserLoginDto dto)
         {
-
-
+            var result = await _appUserService.CheckUserAsync(dto);
+            if (result.ResponseType == Common.ResponseType.Success)
+            {
+                //İlgili kullancının rollerini çekmemiz lazım
+                var claims = new List<Claim>();
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = dto.RememberMe
+                };
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity), authProperties);
+            }
+            ModelState.AddModelError("", result.Message);
             return View(dto);
+
         }
     }
 }

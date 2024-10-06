@@ -42,7 +42,7 @@ namespace Udemy.AdvertisementApp.DataAccess.Repositories
         {
             return await _context.Set<T>().FindAsync(id);
         }
-        public async Task<T> GetByFilter(Expression<Func<T, bool>> filter, bool asNoTracking = false)
+        public async Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter, bool asNoTracking = false)
         {
             return !asNoTracking ? await _context.Set<T>().AsNoTracking().SingleOrDefaultAsync(filter)
                 : await _context.Set<T>().SingleOrDefaultAsync(filter);
