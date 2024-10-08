@@ -1,6 +1,8 @@
-﻿namespace Udemy.AdvertisementApp.Dtos
+﻿using Udemy.AdvertisementApp.Dtos.Interfaces;
+
+namespace Udemy.AdvertisementApp.Dtos
 {
-    public class AppUserLoginDto
+    public class AppUserLoginDto : IDto
     {
         public string Username { get; set; }
         public string Password { get; set; }

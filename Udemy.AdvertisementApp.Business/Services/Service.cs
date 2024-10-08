@@ -53,7 +53,7 @@ namespace Udemy.AdvertisementApp.Business.Services
 
         public async Task<IResponse<IDto>> GetByIdAsync<IDto>(int id)
         {
-            var data = await _uow.GetRepository<T>().GetByFilter(x => x.Id == id);
+            var data = await _uow.GetRepository<T>().GetByFilterAsync(x => x.Id == id);
             if (data == null)
             {
                 return new Response<IDto>(ResponseType.NotFound, $"{id} ye sahip data bulunamadı.");
