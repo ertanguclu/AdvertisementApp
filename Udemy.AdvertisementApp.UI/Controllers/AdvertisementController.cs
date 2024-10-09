@@ -106,7 +106,7 @@ namespace Udemy.AdvertisementApp.UI.Controllers
         public async Task<IActionResult> List()
         {
             var list = await _advertisementAppUserService.GetList(AdvertisementAppUserStatusType.Başvurdu);
-            return View();
+            return View(list);
         }
     }
 }
