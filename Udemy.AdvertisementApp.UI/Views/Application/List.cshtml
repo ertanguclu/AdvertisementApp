@@ -29,8 +29,8 @@
                             <td>@advertisement.CreateDate.ToString("dddd, dd MMMM yyyy")</td>
                             <td>@(advertisement.Status ? "Aktif" : "Pasif")</td>
                             <td>
-                                <a asp-action="Update" asp-controller="Application">Güncelle</a>
-                                <a asp-action="Remove" asp-controller="Application">Sil</a>
+                                <a asp-action="Update" asp-controller="Application" asp-route-id="@advertisement.Id">Güncelle</a>
+                                <a asp-action="Remove" asp-controller="Application" asp-route-id="@advertisement.Id">Sil</a>
                             </td>
                         </tr>
                     }

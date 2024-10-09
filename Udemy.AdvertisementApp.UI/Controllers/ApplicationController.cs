@@ -35,5 +35,21 @@ namespace Udemy.AdvertisementApp.UI.Controllers
 
 
         }
+        public async Task<IActionResult> Update(int id)
+        {
+            var response = await _advertisementService.GetByIdAsync<AdvertisementUpdateDto>(id);
+            return this.ResponseView(response);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Update(AdvertisementUpdateDto dto)
+        {
+            var response = await _advertisementService.UpdateAsync(dto);
+            return this.ResponseRedirectAction(response, "List");
+        }
+        public async Task<IActionResult> Remove(int id)
+        {
+            var response = await _advertisementService.RemoveAsync(id);
+            return this.ResponseRedirectAction(response, "List");
+        }
     }
 }
