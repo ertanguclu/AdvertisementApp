@@ -12,6 +12,6 @@ namespace Udemy.AdvertisementApp.Dtos
         public int MilitaryStatusId { get; set; }
         public DateTime? EndDate { get; set; }
         public int WorkExperience { get; set; }
-        public string CvFile { get; set; }
+        public string CvPath { get; set; }
     }
 }

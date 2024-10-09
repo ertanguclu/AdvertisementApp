@@ -19,7 +19,7 @@
     {
         Success,
         ValidationError,
-        NotFound
+        NotFound,
     }
 
 }
