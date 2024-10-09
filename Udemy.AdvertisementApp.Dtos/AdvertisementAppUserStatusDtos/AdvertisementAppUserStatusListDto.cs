@@ -1,8 +1,6 @@
-﻿using Udemy.AdvertisementApp.Dtos.Interfaces;
-
-namespace Udemy.AdvertisementApp.Dtos
+﻿namespace Udemy.AdvertisementApp.Dtos
 {
-    public class AdvertisementAppUserStatusListDto : IDto
+    public class AdvertisementAppUserStatusListDto
     {
         public string Definition { get; set; }
     }

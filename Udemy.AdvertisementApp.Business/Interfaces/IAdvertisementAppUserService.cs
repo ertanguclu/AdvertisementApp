@@ -10,5 +10,6 @@ namespace Udemy.AdvertisementApp.Business.Interfaces
     {
         Task<IResponse<AdvertisementAppUserCreateDto>> CreateAsync(AdvertisementAppUserCreateDto dto);
         Task<List<AdvertisementAppUserListDto>> GetList(AdvertisementAppUserStatusType type);
+        Task SetStatusAsync(int advertisementAppUserId, AdvertisementAppUserStatusType type);
     }
 }

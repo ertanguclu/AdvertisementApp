@@ -105,7 +105,28 @@ namespace Udemy.AdvertisementApp.UI.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> List()
         {
-            var list = await _advertisementAppUserService.GetList(AdvertisementAppUserStatusType.Başvurdu);
+            var list = await _advertisementAppUserService.GetList(AdvertisementAppUserStatusType.Basvurdu);
+            return View(list);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> SetStatus(int advertisementAppUserId, AdvertisementAppUserStatusType type)
+        {
+            await _advertisementAppUserService.SetStatusAsync(advertisementAppUserId, type);
+            return RedirectToAction("List");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ApprovedList()
+        {
+            var list = await _advertisementAppUserService.GetList(AdvertisementAppUserStatusType.Mulakat);
+            return View(list);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> RejectedList()
+        {
+            var list = await _advertisementAppUserService.GetList(AdvertisementAppUserStatusType.Olumsuz);
             return View(list);
         }
     }

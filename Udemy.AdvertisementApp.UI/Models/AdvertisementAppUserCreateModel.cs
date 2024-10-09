@@ -8,7 +8,7 @@ namespace Udemy.AdvertisementApp.UI.Models
     {
         public int AdvertisementId { get; set; }
         public int AppUserId { get; set; }
-        public int AdvertisementAppUserStatusId { get; set; } = (int)AdvertisementAppUserStatusType.Başvurdu;
+        public int AdvertisementAppUserStatusId { get; set; } = (int)AdvertisementAppUserStatusType.Basvurdu;
 
         public int MilitaryStatusId { get; set; }
         public DateTime? EndDate { get; set; }

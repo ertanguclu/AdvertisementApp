@@ -49,7 +49,7 @@ namespace Udemy.AdvertisementApp.DataAccess.Repositories
         }
         public IQueryable<T> GetQuery()
         {
-            return _context.Set<T>().AsNoTracking();
+            return _context.Set<T>().AsQueryable();
         }
         public void Remove(T entity)
         {
