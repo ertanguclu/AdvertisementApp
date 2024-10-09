@@ -2,9 +2,8 @@
 
 namespace Udemy.AdvertisementApp.Dtos
 {
-    public class MilitaryStatusListDto : IDto
+    public class AdvertisementAppUserStatusListDto : IDto
     {
-        public int Id { get; set; }
         public string Definition { get; set; }
     }
 }

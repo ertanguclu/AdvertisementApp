@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Udemy.AdvertisementApp.Business.Extensions;
 using Udemy.AdvertisementApp.Business.Interfaces;
 using Udemy.AdvertisementApp.Common;
+using Udemy.AdvertisementApp.Common.Enums;
 using Udemy.AdvertisementApp.DataAccess.UnitOfWork;
 using Udemy.AdvertisementApp.Dtos;
 using Udemy.AdvertisementApp.Entities;
@@ -47,6 +50,13 @@ namespace Udemy.AdvertisementApp.Business.Services
 
             }
             return new Response<AdvertisementAppUserCreateDto>(dto, result.ConvertToCustomValidationError());
+        }
+        public async Task<List<AdvertisementAppUserListDto>> GetList(AdvertisementAppUserStatusType type)
+        {
+            var query = _uow.GetRepository<AdvertisementAppUser>().GetQuery();
+            var list = await query.Include(x => x.Advertisement).Include(x => x.AdvertisementAppUserStatus).Include(x => x.MilitaryStatus).Include(x => x.AppUser)
+                .Where(x => x.AdvertisementAppUserStatusId == (int)type).ToListAsync();
+            return _mapper.Map<List<AdvertisementAppUserListDto>>(list);
         }
     }
 }

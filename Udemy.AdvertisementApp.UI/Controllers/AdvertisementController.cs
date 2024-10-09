@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using Udemy.AdvertisementApp.Business.Interfaces;
 using Udemy.AdvertisementApp.Common.Enums;
 using Udemy.AdvertisementApp.Dtos;
-using Udemy.AdvertisementApp.Dtos.MilitaryStatusDtos;
 using Udemy.AdvertisementApp.UI.Models;
 
 namespace Udemy.AdvertisementApp.UI.Controllers
@@ -102,6 +101,12 @@ namespace Udemy.AdvertisementApp.UI.Controllers
             {
                 return RedirectToAction("HumanResource", "Home");
             }
+        }
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> List()
+        {
+            var list = await _advertisementAppUserService.GetList(AdvertisementAppUserStatusType.Başvurdu);
+            return View();
         }
     }
 }
